@@ -118,6 +118,7 @@ var lastNames = {
 };
 
 var results = document.getElementById('results');
+var header = document.getElementsByTagName('h1');
 var series = ['mx', 'sx'];
 var url = 'http://americanmotocrosslive.com/xml/' + series[0] + '/racelaptimes.json';
 
@@ -144,7 +145,7 @@ function getSeconds(minuteString) {
 function getResults() {
   $.getJSON(url, function(data) {
     /*json = JSON.parse(data)*/;
-    console.log('lol');
+    header.innerHTML += 'g';
     var runningOrder = [];
 
     data['B'].forEach(function(rider, index, riders){

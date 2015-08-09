@@ -1,10 +1,25 @@
 /* line 1, ../scss/style.scss */
 h1 {
   text-align: center;
-  color: lightblue;
+  color: #8CADA7;
 }
 
 /* line 5, ../scss/style.scss */
 #results {
   font-family: monospace;
+  font-size: 1.25em;
+}
+
+/* line 11, ../scss/style.scss */
+table td.center, table th.center {
+  text-align: center;
+}
+/* line 14, ../scss/style.scss */
+table td.right, table th.right {
+  text-align: right;
+}
+
+/* line 19, ../scss/style.scss */
+.table {
+  margin: 0;
 }

@@ -1,7 +1,21 @@
 h1 {
   text-align: center;
-  color: lightblue;
+  color: #8CADA7;
 }
 #results {
   font-family: monospace;
+  font-size: 1.25em;
+}
+
+table {
+  td.center, th.center {
+    text-align: center;
+  }
+  td.right, th.right {
+    text-align: right;
+  }
+}
+
+.table {
+  margin: 0;
 }

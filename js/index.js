@@ -101,20 +101,32 @@ var lastNames = {
  164: 'Ullrich',
  181: 'Pipes',
  187: 'Bauer',
+ 224: 'Harrison',
+ 244: 'Zimmer',
  253: 'Short',
  274: 'Simpson',
+ 285: 'Archer',
+ 309: 'Smith',
  331: 'Weeck',
  348: 'Brooks',
+ 356: 'Lippman',
  377: 'Pourcel',
  381: 'Endicott',
+ 393: 'Herrlein',
  447: 'Raper',
+ 456: 'Grove',
  476: 'Jurin',
  481: 'Astaykin',
+ 558: 'Slusser',
  800: 'Alessi',
  801: 'Alessi',
+ 828: 'Craft',
  894: 'Dillon',
+ 956: 'Masterpool',
  975: 'Loberg',
- 981: 'Politelli'
+ 978: 'Nogueras',
+ 981: 'Politelli',
+ 993: 'Wagner'
 };
 
 var results = document.getElementById('results');
@@ -153,7 +165,7 @@ function getResults() {
       var position = rider['C'][0]['P'];
       var number = rider['A'];
       var name = '';
-      var gap = rider['C'][0]['LD'] == '--.---' ? '+0.000' : '-' + rider['C'][0]['LD'];
+      var gap = rider['C'][0]['LD'] === '--.---' ? '+0.000' : '-' + rider['C'][0]['LD'];
 
       if (number == 1) {
         champ = whichChamp(riders[1]['A']);
@@ -168,17 +180,50 @@ function getResults() {
       runningOrder[position] = {'position': position, 'name': name, 'number': number, 'gap': gap};
     });
 
-    var table = '<table class="table table-striped table-condensed"><tr><th class="center">Pos.</th><th class="right">#</td><th>Rider</th><th class="right">Gap</th></tr>';
-
+    var table = '<table class="table table-striped table-condensed"><thead><tr><th class="center">Pos.</th><th class="right">#</td><th>Rider</th><th class="right">Gap</th></tr></thead><tbody>';
+    
     runningOrder.forEach(function(rider, position){
       if (parseInt(position) < 41) {
         table += '<tr><td class="center">' + position + '</td><td class="right"><b>' + rider['number'] + '</b></td><td><em>' + rider['name'] + '</em></td><td class="right">' + rider['gap'] + '</td></tr>';
       }
     });
-    table += '</table>';
+    table += '</tbody></table>';
     results.innerHTML = table;
   });
 }
 
+function loadXml(xmlHandler) {
+  $.ajax({
+    type: "GET",
+    url: "http://americanmotocrosslive.com/xml/mx/RaceResultsWeb.xml",
+    dataType: "xml",
+    success: function(data) {
+      xmlHandler(data);
+    }
+   });
+}
+
+
+
 getResults();
 setInterval(getResults, 10000);
+
+
+loadXml(function(xml) {
+  // var x = xml.getElementsByTagName('B');
+  // for (var i = 0; i < x.length; ++i) {
+  //   console.log(x[i].getAttribute('F').substring(3));
+  // }
+  var $race = $(xml).find('A');
+  var $results = $(xml).find('B');
+  $.each($results, function(position, result) {
+    console.log((position+1).toString(), $(result).attr('N'), $(result).attr('F').substring(3), $(result).attr('D'));
+  });
+});
+
+
+
+
+
+
+

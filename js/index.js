@@ -145,7 +145,7 @@ function getSeconds(minuteString) {
 function getResults() {
   $.getJSON(url, function(data) {
     /*json = JSON.parse(data)*/;
-    header.innerHTML += 'g';
+    console.log('lol');
     var runningOrder = [];
 
     data['B'].forEach(function(rider, index, riders){
@@ -182,4 +182,4 @@ function getResults() {
 }
 
 getResults();
-window.setInterval(getResults, 10000);
+setInterval(getResults, 10000);

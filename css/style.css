@@ -1,7 +1,10 @@
+/* line 1, ../scss/style.scss */
 h1 {
   text-align: center;
+  color: lightblue;
 }
 
+/* line 5, ../scss/style.scss */
 #results {
   font-family: monospace;
 }

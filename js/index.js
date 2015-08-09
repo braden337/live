@@ -182,4 +182,4 @@ function getResults() {
 }
 
 getResults();
-setInterval(getResults, 10000);
+window.setInterval(getResults, 10000);

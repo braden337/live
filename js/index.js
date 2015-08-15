@@ -249,7 +249,7 @@ function getTheStuff() {
     table += '</tbody></table>';
     results.innerHTML = table;
 
-    console.log('Hello');
+   //  console.log('Hello');
     
   });
 }

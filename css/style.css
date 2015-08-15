@@ -1,25 +1,31 @@
-/* line 1, ../scss/style.scss */
-h1 {
+/* line 7, ../scss/style.scss */
+h3 {
+  color: #333333;
   text-align: center;
-  color: #8CADA7;
 }
 
-/* line 5, ../scss/style.scss */
+/* line 12, ../scss/style.scss */
+h4 {
+  color: #777777;
+  text-align: center;
+}
+
+/* line 17, ../scss/style.scss */
 #results {
   font-family: monospace;
   font-size: 1.25em;
 }
 
-/* line 11, ../scss/style.scss */
+/* line 23, ../scss/style.scss */
 table td.center, table th.center {
   text-align: center;
 }
-/* line 14, ../scss/style.scss */
+/* line 26, ../scss/style.scss */
 table td.right, table th.right {
   text-align: right;
 }
 
-/* line 19, ../scss/style.scss */
+/* line 31, ../scss/style.scss */
 .table {
   margin: 0;
 }

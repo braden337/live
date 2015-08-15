@@ -192,21 +192,43 @@ function getResults() {
   });
 }
 
-function loadXml(xmlHandler) {
+function loadXml(callback) {
   $.ajax({
     type: "GET",
     url: "http://americanmotocrosslive.com/xml/mx/RaceResultsWeb.xml",
     dataType: "xml",
     success: function(data) {
-      xmlHandler(data);
+      callback(data);
     }
    });
 }
 
 
 
-getResults();
-setInterval(getResults, 10000);
+
+
+// loadXml(function(xml) {
+//   // var x = xml.getElementsByTagName('B');
+//   // for (var i = 0; i < x.length; ++i) {
+//   //   console.log(x[i].getAttribute('F').substring(3));
+//   // }
+//   var $race = $(xml).find('A');
+//   var $results = $(xml).find('B');
+
+//   var table = '<table class="table table-striped table-condensed"><thead><tr><th class="center">Pos.</th><th class="right">#</td><th>Rider</th><th class="right">Gap</th></tr></thead><tbody>';
+
+//   $.each($results, function(position, result) {
+//     table += '<tr><td class="center">' + (position+1).toString() + '</td><td class="right"><b>' + $(result).attr('N') + '</b></td><td><em>' + $(result).attr('F').substring(3) + '</em></td><td class="right">' + $(result).attr('D') + '</td></tr>';
+//     // console.log((position+1).toString(), $(result).attr('N'), $(result).attr('F').substring(3), $(result).attr('D'));
+//   });
+
+//   table += '</tbody></table>';
+//   results.innerHTML = table;
+  
+// });
+
+
+
 
 
 loadXml(function(xml) {
@@ -216,14 +238,40 @@ loadXml(function(xml) {
   // }
   var $race = $(xml).find('A');
   var $results = $(xml).find('B');
+
+  var table = '<table class="table table-striped table-condensed"><thead><tr><th class="center">Pos.</th><th class="right">#</td><th>Rider</th><th class="right">Gap</th></tr></thead><tbody>';
+
   $.each($results, function(position, result) {
-    console.log((position+1).toString(), $(result).attr('N'), $(result).attr('F').substring(3), $(result).attr('D'));
+    table += '<tr><td class="center">' + (position+1).toString() + '</td><td class="right"><b>' + $(result).attr('N') + '</b></td><td><em>' + $(result).attr('F').substring(3) + '</em></td><td class="right">' + $(result).attr('D') + '</td></tr>';
+    // console.log((position+1).toString(), $(result).attr('N'), $(result).attr('F').substring(3), $(result).attr('D'));
   });
+
+  table += '</tbody></table>';
+  results.innerHTML = table;
+  
 });
 
+setInterval(loadXml(function(xml) {
+  // var x = xml.getElementsByTagName('B');
+  // for (var i = 0; i < x.length; ++i) {
+  //   console.log(x[i].getAttribute('F').substring(3));
+  // }
+  var $race = $(xml).find('A');
+  var $results = $(xml).find('B');
+
+  var table = '<table class="table table-striped table-condensed"><thead><tr><th class="center">Pos.</th><th class="right">#</td><th>Rider</th><th class="right">Gap</th></tr></thead><tbody>';
+
+  $.each($results, function(position, result) {
+    table += '<tr><td class="center">' + (position+1).toString() + '</td><td class="right"><b>' + $(result).attr('N') + '</b></td><td><em>' + $(result).attr('F').substring(3) + '</em></td><td class="right">' + $(result).attr('D') + '</td></tr>';
+    // console.log((position+1).toString(), $(result).attr('N'), $(result).attr('F').substring(3), $(result).attr('D'));
+  });
+
+  table += '</tbody></table>';
+  results.innerHTML = table;
+  
+}), 10000);
 
 
 
-
-
-
+// getResults();
+// setInterval(getResults, 10000);

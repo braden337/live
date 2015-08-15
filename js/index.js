@@ -240,7 +240,7 @@ function getTheStuff() {
     var $race = $(xml).find('A');
     var $results = $(xml).find('B');
 
-    eventinfo.innerHTML = '<h3>' + $race.attr('E') + '</h2><h4>' + $race.attr('S') + '</h4>';
+    eventinfo.innerHTML = '<h3>' + $race.attr('E').substring(0, $race.attr('E').indexOf('from')-1) + '</h2><h4>' + $race.attr('S') + '</h4>';
     var table = '<table class="table table-striped table-condensed"><thead><tr><th class="center">Pos.</th><th class="right">#</td><th>Rider</th><th class="right">Gap</th></tr></thead><tbody>';
 
     $.each($results, function(position, result) {

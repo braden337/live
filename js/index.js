@@ -195,7 +195,7 @@ var series = ['mx', 'sx'];
 function loadXml(callback) {
   $.ajax({
     type: "GET",
-    url: "http://americanmotocrosslive.com/xml/mx/RaceResultsWeb.xml",
+    url: "http://americanmotocrosslive.com/xml/sx/RaceResultsWeb.xml",
     dataType: "xml",
     success: function(data) {
       callback(data);
